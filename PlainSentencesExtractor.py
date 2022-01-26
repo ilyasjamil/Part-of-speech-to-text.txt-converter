@@ -1,15 +1,18 @@
 'Works only for ".onf" file formats.'
 '----------------------------------'
 
-filename = 'abc_0044.onf'
+filename = 'pri_0017.onf'
 file = open(filename , 'r')
-newfile = open('PlainSentences.txt','w')
+newfile = open('PlainSentences_pri_0017.txt','w')
 data = file.readlines()
 for index in range(len(data)):   
-    if data[index] == 'Plain sentence:\n':               
-        while data[index+2] != 'Treebanked sentence:\n':
-            if data[index+2] != '\n':
-                sentence = data[index+2]
-                newfile.write(sentence)
+    if data[index] == 'Plain sentence:\n': 
+        index = index + 2
+        sentence = ""
+        while data[index] != 'Treebanked sentence:\n':
+            if data[index] != '\n':
+                sentence = sentence + data[index].strip()
             index = index + 1
+        newfile.write(sentence)
+        newfile.write('\n')
 newfile.close()
