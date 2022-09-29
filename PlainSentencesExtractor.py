@@ -3,7 +3,7 @@
 
 filename = 'pri_0017.onf'
 file = open(filename , 'r')
-newfile = open('PlainSentences_pri_0017.txt','w')
+newfile = open('text.txt','w')
 data = file.readlines()
 for index in range(len(data)):   
     if data[index] == 'Plain sentence:\n': 
